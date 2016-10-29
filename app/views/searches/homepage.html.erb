@@ -1,9 +1,9 @@
 <% if current_user %>
 	<h1> Welcome to Shoppr <%= link_to current_user.email, user_path(current_user.id)%></h1>
-  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+ 	<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
 <% else%>
 	<p><%= link_to "Register", new_user_registration_path%></p>
-<h1> Welcome to Shoppr! Please log in or register</h1>
-
+	<h1> Welcome to Shoppr! Please log in or register</h1>
 <% end%>
 
+	
