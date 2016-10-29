@@ -27,6 +27,7 @@ gem 'devise', '~> 4.2'
 # Use Unicorn as the app server
 # gem 'unicorn'
 gem 'pry'
+gem 'faker'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
