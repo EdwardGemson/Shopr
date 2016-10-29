@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+@store_id = 1 
+20.times do |i|
+	stores = Store.create({name: Faker::Beer.name, open: true, hours: "247 365"})
+	inventories = Inventory.create({products: Faker::Hipster.words(4), store_id: @store_id})
+	@store_id += 1
+end
