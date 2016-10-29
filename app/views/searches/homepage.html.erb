@@ -6,7 +6,7 @@
 	<p><%= link_to('Login', new_user_session_path)  %> </p>
 	<h1> Welcome to Shoppr! Please log in or register</h1>
 <% end%>
-<%=form_tag searches_path, class: "form-inline", method: :get do%>
+<%=form_tag searches_path, class: "search-form-box", method: :get do%>
 	<%=text_field_tag(:query, params[:query])%>
  	<%=submit_tag("Search")%>
 	<%=link_to "clear", searches_path%>

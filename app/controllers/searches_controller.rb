@@ -4,7 +4,7 @@ class SearchesController < ApplicationController
 		if params[:query].present?
 			@stores = Store.search(params[:query], location: params[:location])
 		else
-			flash[:notice] = "Sorry, no stores have that item. Please revise your search terms"
+			flash[:notice] = "Sorry, no stores have that item. Please revise your search terms" #this is showing up after logging in, not after searches
 		end
 	end
 
@@ -22,5 +22,9 @@ class SearchesController < ApplicationController
 
 	def update
 	end
+
+	def autocomplete
+    render json: Search.search(params[:query], autocomplete: true, limit: 10).map(&:name)
+  	end
 
 end
