@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   #   get 'products/:id' => 'catalog#view'
   resources :searches, only: [:homepage, :create, :edit, :update, :show]
   root 'searches#homepage'
-
+  get :autocomplete
 
     # resource :session, only: [:new, :create, :destroy]
     # get '/logout' => 'sessions#destroy'
