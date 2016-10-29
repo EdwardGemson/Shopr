@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
-  resources :searches, only: [:homepage]
+  resources :searches, only: [:homepage, :create, :edit, :update, :show]
   root 'searches#homepage'
 
 
