@@ -1,7 +1,8 @@
 class Search < ActiveRecord::Base
 	searchkick autocomplete: ['name']
 	has_many :users
-
+	has_many :products
+		
 	def find_stores(item)
 		Store.all.where([])
 	end
