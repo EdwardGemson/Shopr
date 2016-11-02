@@ -1,20 +1,19 @@
 class SearchesController < ApplicationController
 	
 	def homepage
-		if params[:query].present?
-			@stores = Store.search(params[:query], location: params[:location])
-		else
-			flash[:notice] = "Sorry, no stores have that item. Please revise your search terms" #this is showing up after logging in, not after searches
-		end
+		
 	end
 
 	def create
+		@search = search_walmart(query)
+		render :show(@search.id)
 	end
 
 	def new
 	end
 
 	def show
+
 	end
 
 	def edit
@@ -28,3 +27,11 @@ class SearchesController < ApplicationController
   	end
 
 end
+
+
+# if params[:query].present?
+# 			@search = Store.search(params[:query], location: params[:location])
+# 			binding.pry
+# 		else
+# 			flash[:notice] = "Sorry, no stores have that item. Please revise your search terms" #this is showing up after logging in, not after searches
+# 		end
