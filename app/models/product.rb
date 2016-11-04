@@ -1,4 +1,3 @@
 class Product < ActiveRecord::Base
-	belongs_to :inventory
-	has_many :stores, through: :inventories
+	belongs_to :stores
 end
