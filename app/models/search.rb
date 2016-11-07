@@ -1,6 +1,7 @@
 class Search < ActiveRecord::Base
 	has_many :users
-
+	has_many :products
+		
 	def find_stores(item)
 		Store.all.where([])
 	end
