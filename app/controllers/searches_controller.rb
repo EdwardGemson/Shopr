@@ -5,11 +5,13 @@ class SearchesController < ApplicationController
 	end
 
 	def create
-		@search = search_walmart(query)
-		render :show(@search.id)
+		@search = Search.search_walmart(params["query"], current_user) #this will call the walmart API for the search term and return a 
+			binding.pry
+		render search_path(@search.id)
 	end
 
 	def new
+
 	end
 
 	def show
@@ -17,9 +19,11 @@ class SearchesController < ApplicationController
 	end
 
 	def edit
+
 	end
 
 	def update
+
 	end
 
 	def autocomplete

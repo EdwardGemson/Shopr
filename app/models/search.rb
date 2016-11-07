@@ -1,5 +1,4 @@
 class Search < ActiveRecord::Base
-	searchkick autocomplete: ['name']
 	has_many :users
 	has_many :products
 		
@@ -7,12 +6,13 @@ class Search < ActiveRecord::Base
 		Store.all.where([])
 	end
 
-	def search_walmart(item)
-		# Search.create(name: item, user_id: current_user.id)
-		# response = HTTParty.get(http://api.walmartlabs.com/v1/search?apiKey={z42q96ksvaqwy6v86pzz5phx}&lsPublisherId={3358587}&query=item)
-		# Product.find_or_initialize_by(name: response.name, store: "walmart").update_attributes(price: response.price)
-		"you searched for #{item}"
-	end
+	def self.search_walmart(item, current_user)
+		new_search = Search.create(name: item, user_id: current_user.id)
+		response = HTTParty.get('http://api.walmartlabs.com/v1/search?query=item&format=json&apiKey=z42q96ksvaqwy6v86pzz5phx')
+		response['items'].each do |product|
+			Product.find_or_initialize_by(name: product['name'], store_name: "walmart").update_attributes(price: product['salePrice'].to_i)
+		end
 
+	end
 
 end
