@@ -5,9 +5,10 @@ class SearchesController < ApplicationController
 	end
 
 	def create
-		@search = Search.search_walmart(params["query"], current_user) #this will call the walmart API for the search term and return a 
+		@search = Search.create(name: params["query"], user_id: current_user.id)
+		# @search = Search.search_walmart(params["query"], current_user) #this will call the walmart API for the search term and return a 
 			binding.pry
-		render search_path(@search.id)
+		
 	end
 
 	def new
@@ -15,6 +16,7 @@ class SearchesController < ApplicationController
 	end
 
 	def show
+		@search_results = @search.search_walmart(@search.name, current_user)
 
 	end
 
@@ -26,16 +28,8 @@ class SearchesController < ApplicationController
 
 	end
 
-	def autocomplete
-    render json: Search.search(params[:query], autocomplete: true, limit: 10).map(&:name)
-  	end
+	# def autocomplete
+ #    render json: Search.search(params[:query], autocomplete: true, limit: 10).map(&:name)
+ #  	end
 
 end
-
-
-# if params[:query].present?
-# 			@search = Store.search(params[:query], location: params[:location])
-# 			binding.pry
-# 		else
-# 			flash[:notice] = "Sorry, no stores have that item. Please revise your search terms" #this is showing up after logging in, not after searches
-# 		end
