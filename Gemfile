@@ -29,6 +29,7 @@ gem 'devise', '~> 4.2'
 gem 'pry'
 gem 'faker'
 gem 'httparty'
+gem 'redis-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
