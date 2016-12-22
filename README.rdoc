@@ -1,3 +1,3 @@
 == README
 
-Have you ever needed an obscure item but weren't sure where to start with finding it?
+Have you ever needed an obscure item but weren't sure where to start with finding it? Shopr is an immersive app that uses the inventories from stores around NYC to allow users to search for any item they aren't sure where to find, and see the item, its brand, price and location after one simple search. Shopr saves you the hassle of having to go to five different stores that might have the product you need, and tells you what inventory is in stock now. 
