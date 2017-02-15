@@ -1,0 +1,10 @@
+<h1> Showing Results For: <%=@search.name%> </h1>
+
+<%@search_results.each do |result| %>
+	<ul>
+		<li><p><%= result.first['name']%> </p></li>
+		<li><p><%= result.first['salePrice']%></p></li>
+		<li><p><%= result.first['categoryPath'] %></p></li>
+		<li><p><img src=<%= result.first['thumbnailImage']%>> </li></p>
+	</ul>
+<%end%>

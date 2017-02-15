@@ -6,9 +6,8 @@ class SearchesController < ApplicationController
 
 	def create
 		@search = Search.create(name: params["query"], user_id: current_user.id)
-		# @search = Search.search_walmart(params["query"], current_user) #this will call the walmart API for the search term and return a 
-			binding.pry
-		
+		# @search_results = Search.search_walmart(params["query"], current_user) #this will call the walmart API for the search term and return a 
+		 redirect_to search_path(@search.id) 
 	end
 
 	def new
@@ -16,7 +15,8 @@ class SearchesController < ApplicationController
 	end
 
 	def show
-		@search_results = @search.search_walmart(@search.name, current_user)
+		@search = Search.find_by(id: params["id"])
+		@search_results = Search.search_walmart(@search.name, current_user)
 
 	end
 
