@@ -10,9 +10,8 @@ class Search < ActiveRecord::Base
 		search_results = []
 		new_search = Search.find_or_create_by(name: item, user_id: current_user.id)
 		response = HTTParty.get('http://api.walmartlabs.com/v1/search?query=item&format=json&apiKey=z42q96ksvaqwy6v86pzz5phx')
-		search_results << response['items'].select do |product|
-			product['name'] = new_search.name
-		end
+		
+		search_results << response.select {|product| product['name'] == new_search.name}
 		search_results
 	end
 
