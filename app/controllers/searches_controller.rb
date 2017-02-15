@@ -17,7 +17,6 @@ class SearchesController < ApplicationController
 	def show
 		@search = Search.find_by(id: params["id"])
 		@search_results = Search.search_walmart(@search.name, current_user)
-
 	end
 
 	def edit

@@ -1,10 +1,15 @@
 <h1> Showing Results For: <%=@search.name%> </h1>
-
-<%@search_results.each do |result| %>
-	<ul>
-		<li><p><%= result.first['name']%> </p></li>
-		<li><p><%= result.first['salePrice']%></p></li>
-		<li><p><%= result.first['categoryPath'] %></p></li>
-		<li><p><img src=<%= result.first['thumbnailImage']%>> </li></p>
-	</ul>
+<%=link_to "Home", root_path %>
+<%if @search_results.first.empty?%>
+	<h2> Sorry, no results found</h2>
+<%else%>
+	<%@search_results.each do |result| %>
+		<ul>
+			<li><p><img src=<%= result.first['thumbnailImage']%>> </li></p>
+			<li><p><%= result.first['name']%> </p></li>
+			<li><p>Price: <%= result.first['salePrice']%></p></li>
+			<li><p>Category: <%= result.first['categoryPath'] %></p></li>
+			<li><p>Description: <%= result.first['longDescription'] %></p></li>
+		</ul>
+	<%end%>
 <%end%>
